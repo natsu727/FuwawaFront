@@ -106,7 +106,7 @@ const Test = () => {
 
   return (
     <div>
-      <video ref={videoRef} autoPlay/>
+      <video ref={videoRef} autoPlay style={{display:'none'}}/>
       <canvas ref={canvasRef} width="640" height="480" style={{ border: '1px solid black' }} />
     </div>
   );
