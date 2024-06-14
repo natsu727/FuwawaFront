@@ -3,9 +3,9 @@ import { Link } from "react-router-dom";
 import "./Bookshelf.css";
 
 const books = [
-  { id: 1, title: "短いタイトル", genre: "Fiction" },
-  { id: 2, title: "この本のタイトルはとても長いです", genre: "Non-Fiction" },
-  { id: 3, title: "シンデレラ", genre: "Fiction" },
+  { id: 1, title: "短いタイトル", genre: "" },
+  { id: 2, title: "この本のタイトルはとても長いです", genre: "" },
+  { id: 3, title: "シンデレラ", genre: "" },
   // 他の本のデータも追加
 ];
 

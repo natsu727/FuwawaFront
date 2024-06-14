@@ -1,12 +1,36 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 
-const BookDetail = ({ match }) => {
+const BookDetail = () => {
+  const { id } = useParams();
+  const [book, setBook] = useState(null);
+
+  useEffect(() => {
+    const fetchBook = async () => {
+      try {
+        const response = await fetch(`API_URL/books/${id}`);
+        if (!response.ok) {
+          throw new Error("Failed to fetch book");
+        }
+        const data = await response.json();
+        setBook(data);
+      } catch (error) {
+        console.error(`Error fetching book details for id ${id}:`, error);
+        setBook(null); // エラー時に book を null に設定して、エラーメッセージを表示する
+      }
+    };
+    fetchBook();
+  }, [id]);
+
+  if (!book) {
+    return <div>Loading...</div>;
+  }
+
   return (
     <div>
       <h2>Book Detail</h2>
-      {/* IDに基づいて本の情報を取得し表示する */}
-      <h3>Book Title</h3>
-      <p>Book Content...</p>
+      <h3>{book.title}</h3>
+      <p>{book.content}</p>
     </div>
   );
 };
