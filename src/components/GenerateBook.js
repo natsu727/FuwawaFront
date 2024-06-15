@@ -20,14 +20,15 @@ const GenerateBook = () => {
           messages: [
             {
               role: "system",
-              content: "あなたは優れた作家です。ジャンルとキーワードから日本語の本を作成してください。タイトルと入力されたジャンル、本文をjson形式で生成してください。文字数:800~1600",
+              content: "あなたは優れた作家です。ジャンルとキーワードから日本語の本を作成してください。入力されたジャンルとタイトル、本文をjson形式で生成してください。文字数:800~1600。改行はいれないでください。jsonのキーはgenre、title、content",
+              // content: "あなたは優れた作家です。ジャンルとキーワードから日本語の本を作成してください。入力されたジャンルとタイトル、本文をjson形式で生成してください。文字数:20~70。改行はいれないでください。jsonのキーはgenre、title、content",
             },
             {
               role: "user",
               content: `ジャンル: ${genre}\nキーワード: ${keyword}`,
             },
           ],
-          max_tokens: 150,
+          max_tokens: 1600,
         },
         {
           headers: {
@@ -36,11 +37,33 @@ const GenerateBook = () => {
           },
         }
       );
+      
 
-      const responseData = response.data;
-      const generatedText = responseData.choices[0].message.content.split("\n");
-      setTitle(generatedText[0]);
-      setContent(generatedText.slice(1).join("\n"));
+      const responseData = response.data.choices[0].message.content;
+      console.log("生成されたデータ:", responseData);
+
+      const jsonResponse = JSON.parse(responseData);
+
+      setTitle(jsonResponse.title);
+      setContent(jsonResponse.content);
+      
+
+
+      // 生成されたデータをバックエンドに送信
+      await axios.post(
+        "https://fuwawa-back2.onrender.com/regist",
+        {
+          title: jsonResponse.title,
+          genre: genre,
+          content: jsonResponse.content,
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+
     } catch (error) {
       // エラーハンドリング
       console.error("Error generating book:", error);
@@ -69,9 +92,9 @@ const GenerateBook = () => {
       {error && <p style={{ color: "red" }}>{error}</p>}
       {title && (
         <div>
-          <h2>生成されたタイトル</h2>
+          <h2>タイトル</h2>
           <p>{title}</p>
-          <h2>生成された本文</h2>
+          <h2>本文</h2>
           <p>{content}</p>
         </div>
       )}
@@ -80,4 +103,3 @@ const GenerateBook = () => {
 };
 
 export default GenerateBook;
-

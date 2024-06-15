@@ -1,24 +1,33 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "./Bookshelf.css";
 
-const books = [
-  { id: 1, title: "短いタイトル", genre: "" },
-  { id: 2, title: "この本のタイトルはとても長いです", genre: "" },
-  { id: 3, title: "シンデレラ", genre: "" },
-  // 他の本のデータも追加
-];
-
 const getRandomColor = () => {
-  const letters = "0123456789ABCDEF";
-  let color = "#";
-  for (let i = 0; i < 6; i++) {
-    color += letters[Math.floor(Math.random() * 16)];
-  }
+  let color = "rgba(";
+  color += Math.random() * 255 + "," + Math.random() * 255 + "," + Math.random() * 255 + "," + 0.3 + ")";
   return color;
 };
 
 const Bookshelf = () => {
+  const [books, setBooks] = useState([]);
+
+  useEffect(() => {
+    const fetchBooks = async () => {
+      try {
+        const response = await fetch("https://fuwawa-back2.onrender.com/");
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        const data = await response.json();
+        setBooks(data);
+      } catch (error) {
+        console.error("Failed to fetch books:", error);
+      }
+    };
+
+    fetchBooks();
+  }, []);
+
   return (
     <div>
       <h2>本棚</h2>
