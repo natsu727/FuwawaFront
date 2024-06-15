@@ -1,16 +1,18 @@
-.App {
-  text-align: center;
+nav {
+  align-items: center;
+  padding: 10px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.menu {
+  display: flex;
+  justify-content: space-between;
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.menu li {
+  padding: 10px 20px;
 }
 
 /* .App-header {
@@ -23,18 +25,38 @@
   font-size: calc(10px + 2vmin);
   color: white;
 } */
-
-.App-link {
-  color: #61dafb;
+/* .menu li:last-child {
+  margin-right: 0;
+  margin-left: auto;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.menu a{
+  color: #000;
+  font-size: 16px;
+  padding: 10px 20px;
+}
+
+.menu button {
+  /* background: none; */
+  /* border: none; */
+/*   cursor: pointer;
+  font-size: 16px;
+}
+
+.menu li:last-child {
+  margin-right: 0;
+} */ 
+
+.menu li button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font: inherit;
+  padding: 0;
+}
+
+.menu li:last-child {
+  margin-left: auto;
 }
 
 /* 背景等 */
