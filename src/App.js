@@ -14,7 +14,7 @@ function App() {
         <nav>
           <ul className="menu">
             <li>
-              <Link to="/">トップページ</Link>
+              <Link to="">トップページ</Link>
             </li>
             <li>
               <Link to="/generate">生成ページ</Link>

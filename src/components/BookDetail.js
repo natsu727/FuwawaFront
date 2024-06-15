@@ -1,6 +1,5 @@
 import React from 'react';
-import Sample from './Sample'; // インポート先がSampleとなっていますが、実際のファイル名に合わせてください
-// import './App.css';
+import Sample from './Sample';
 
 function BookDetail() {
   const style = {
