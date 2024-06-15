@@ -5,15 +5,18 @@ const status={
   "waiting":"🔴",
   "watching":"🟢"
 }
+const ClickStatus={
+  "Touch":true,
+  "Avoid":false
+}
 const Test = () => {
 	const videoRef = useRef(null);
-	const canvasRef = useRef(null);
 	const [model, setModel] = useState(null);
-  const [message,setMessage] = useState("waiting")
-  const [cameraState,setCameraState] = useState(status.waiting) 
+  const [cameraState,setCameraState] = useState(status.waiting)
+  const [clickState,setClickState]=useState(ClickStatus.Avoid);
   useEffect(() => {
     const loadModel = async () => {
-      const handposeModel = await handpose.load(60);
+      const handposeModel = await handpose.load(40);
       setModel(handposeModel);
     };
     loadModel();
@@ -29,54 +32,65 @@ const Test = () => {
     };
     startVideo();
   }, []);
-  let prevX=325;
+
+  let point1;
+  let point2;
   useEffect(() => {
       const detectHands = async () => {
         if (videoRef.current && model) {
           const predictions = await model.estimateHands(videoRef.current);
           if (predictions.length > 0) {
-            setCameraState(status.watching)
+            setCameraState(status.watching);
             monitalingHands(predictions);
           }else{
-            prevX=325;
-            setMessage("waiting")
+            // setClickState(ClickStatus.Avoid)
             setCameraState(status.waiting)
           }
         }
         requestAnimationFrame(detectHands);
       };
+
       const monitalingHands = (predictions) => {
         predictions.forEach(prediction => {
         const landmarks = prediction.landmarks;
-        let sum_x=0;
-        landmarks.forEach(landmark => {
-          const [x] = landmark;
-          sum_x+=x;
+        landmarks.forEach((landmark,index) => {
+          const [x,y] = landmark;
+          if(index==0||index==12){
+            switch(index){
+              case 0:
+                point1=[x,y];
+                break;
+              case 12:
+                point2=[x,y];
+                break;
+              default:
+                break;
+            }
+          }
           });
-          if(prevX-sum_x/21>100){
-            setMessage("次！！")
-            console.log("次")
-          }
-          else if(prevX-sum_x/21<-100){
-            setMessage("前！！")
-            console.log("前")
-          }
-          prevX=sum_x/21
         });
       };
+
     if (model) {
       detectHands();
+      if(clickState===ClickStatus.Avoid && Math.sqrt((point1[0]-point2[0])**2+(point1[1]-point2[1])**2) < 150){
+        setClickState(ClickStatus.Touch)
+      }
+      else if(clickState===ClickStatus.Touch && Math.sqrt((point1[0]-point2[0])**2+(point1[1]-point2[1])**2) > 150){
+        setClickState(ClickStatus.Avoid)
+      }
     }
   // }
     }, [model]);
-  
 
+    useEffect(()=>{
+    },[clickState])
   return (
     <div>
+      <h1>{clickState ? "Touch!":""}</h1>
       {cameraState}
-      <h1>{message}</h1>
       <video ref={videoRef} autoPlay style={{display:"none"}} />
-      {/* <canvas ref={canvasRef} width="640" height="480" style={{ border: '1px solid black' }} /> */}
+      {/* <video ref={videoRef} autoPlay /> */}
     </div>
   );
 };
