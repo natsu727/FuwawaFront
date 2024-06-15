@@ -13,7 +13,7 @@
   }
 }
 
-.App-header {
+/* .App-header {
   background-color: #ffffff;
   min-height: 100vh;
   display: flex;
@@ -21,8 +21,8 @@
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: rgb(80, 41, 41);
-}
+  color: white;
+} */
 
 .App-link {
   color: #61dafb;
@@ -37,7 +37,25 @@
   }
 }
 
+/* 背景等 */
+#root {
+  position: relative;
+  background-image: url('../img/background.jpg');
+  background-size: cover; /* 画像が全体を覆うようにする */
+  background-repeat: no-repeat; /* 画像が繰り返されないようにする */
+  background-position: center; /* 画像を中央に配置 */
+  min-height: 100vh; /* 画面全体の高さをカバーする */
+  min-width: 100vh;
+}
+
 /* アコーディオンパネルの装飾等 */
+h3 {
+  font-family: 'Times New Roman Bold', serif;
+  font-weight: 700;
+  color: #ffffff;
+  text-shadow: 1px 1px 1px #aaa;
+}
+
 .accordion-area{
   list-style: none;
   width: 96%;
@@ -51,7 +69,7 @@
 
 .accordion-area section {
 	border: 1px solid #ccc;
-  background-color: #fcfcfb;
+  background-color: rgba(150, 150, 150, 0.8);
 }
 
 .title {
@@ -69,8 +87,7 @@
     content:'';
     width: 15px;
     height: 2px;
-    background-color: #333;
-    
+    background-color: #212121;
 }
 .title::before{
     top:48%;
@@ -98,7 +115,7 @@
 /*アコーディオンで現れるエリア*/
 .box {
     display: none;/*はじめは非表示*/
-    background: #f3f3f3;
+    background: rgba(226, 226, 226, 0.6);
 	margin:0 3% 3% 3%;
     padding: 3%;
 }

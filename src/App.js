@@ -18,7 +18,7 @@ function App() {
 
   return (
     <Router>
-      <div>
+      <div id="root">
         <nav>
           <ul className="accordion-area">
             <li>
