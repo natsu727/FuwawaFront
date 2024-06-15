@@ -10,18 +10,20 @@ const books = [
 ];
 
 const getRandomColor = () => {
-  const letters = "0123456789ABCDEF";
-  let color = "#";
-  for (let i = 0; i < 6; i++) {
-    color += letters[Math.floor(Math.random() * 16)];
-  }
-  return color;
+  // const letters = "0123456789ABCDEF";
+  // let color = "#";
+  // for (let i = 0; i < 6; i++) {
+  //   color += letters[Math.floor(Math.random() * 16)];
+  // }
+  // return color;
+  let color ="rgba("
+  color += Math.random()*255+","+Math.random()*255+","+Math.random()*255+","+0.3+")";
+   return color;
 };
 
 const Bookshelf = () => {
   return (
     <div>
-      <h2>本棚</h2>
       <div className="bookshelf">
         {books.map((book) => (
           <Link to={`/book/${book.id}`} key={book.id} className="book">
