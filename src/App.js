@@ -4,6 +4,7 @@ import Bookshelf from "./components/Bookshelf";
 import GenerateBook from "./components/GenerateBook";
 import SearchBooks from "./components/SearchBooks";
 import "./App.css";
+import BookDetail from "./components/BookDetail";
 
 
 function App() {
@@ -31,6 +32,10 @@ function App() {
           <Route path="/" element={<Bookshelf />} />
           <Route path="/generate" element={<GenerateBook />} />
           <Route path="/search" element={<SearchBooks />} />
+
+          {/* テスト用 */}
+          <Route path="/detail" element={<BookDetail />} />
+
         </Routes>
       </div>
     </Router>
