@@ -20,9 +20,9 @@ const GenerateBook = () => {
         <label>
           ジャンル:
           <select value={genre} onChange={handleGenreChange}>
-            <option value="">SF</option>
-            <option value="Fiction">恋愛</option>
-            <option value="Non-Fiction">ミステリー</option>
+            <option value="SF">SF</option>
+            <option value="Rennai">恋愛</option>
+            <option value="Misuteri">ミステリー</option>
             {/* 他のジャンルを追加するなら */}
           </select>
         </label>
