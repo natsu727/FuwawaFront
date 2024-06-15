@@ -26,20 +26,20 @@ function App() {
               </li>
             </section>
             
-//           <ul className="menu">
-//             <li>
-//               <Link to="">トップページ</Link>
-//             </li>
-//             <li>
-//               <Link to="/generate">生成ページ</Link>
-//             </li>
-//             <li>
-//               <Link to="/search">蔵書検索</Link>
-//             </li>
-//             <button>
-//               ログイン
-//             </button>
-//           </ul>
+           {/* <ul className="menu"> */}
+             {/* <li> */}
+               {/* <Link to="">トップページ</Link> */}
+             {/* </li> */}
+             {/* <li> */}
+               {/* <Link to="/generate">生成ページ</Link> */}
+             {/* </li> */}
+             {/* <li> */}
+               {/* <Link to="/search">蔵書検索</Link> */}
+             {/* </li> */}
+             {/* <button> */}
+               {/* ログイン */}
+             {/* </button> */}
+           {/* </ul> */}
           </ul>
         </nav>
 
