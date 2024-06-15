@@ -13,9 +13,9 @@ function App() {
     <Router>
       <div id="root">
         <nav>
-        <li>
-          <Link to="/" className="title">本棚</Link>
-        </li>
+          <li>
+            <Link to="/" className="title">本棚</Link>
+          </li>
           <ul className="accordion-area">
             <section>
               <li>
@@ -39,6 +39,7 @@ function App() {
 //             <button>
 //               ログイン
 //             </button>
+//           </ul>
           </ul>
         </nav>
 
