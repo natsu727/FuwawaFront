@@ -3,13 +3,15 @@ import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import Bookshelf from "./components/Bookshelf";
 import GenerateBook from "./components/GenerateBook";
 import SearchBooks from "./components/SearchBooks";
+import "./App.css";
+
 
 function App() {
   return (
     <Router>
       <div>
         <nav>
-          <ul>
+          <ul className="menu">
             <li>
               <Link to="/">トップページ</Link>
             </li>
@@ -19,6 +21,9 @@ function App() {
             <li>
               <Link to="/search">蔵書検索</Link>
             </li>
+            <button>
+              ログイン
+            </button>
           </ul>
         </nav>
 
