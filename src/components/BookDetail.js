@@ -1,5 +1,9 @@
-import React from 'react';
-import Sample from './Sample';
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import "../App.css";
+
+// import React from 'react';
+// import Sample from './Sample';
 
 function BookDetail() {
   const style = {
@@ -8,10 +12,10 @@ function BookDetail() {
     marginTop: 150,
   };
 
+         // <Sample />
   return (
     <div className="App">
       <div style={style}>
-        <Sample />
       </div>
     </div>
   );

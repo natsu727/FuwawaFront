@@ -30,7 +30,6 @@ const Bookshelf = () => {
 
   return (
     <div>
-      <h2>本棚</h2>
       <div className="bookshelf">
         {books.map((book) => (
           <Link to={`/book/${book.id}`} key={book.id} className="book">
