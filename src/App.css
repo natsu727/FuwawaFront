@@ -49,17 +49,10 @@
 }
 
 /* アコーディオンパネルの装飾等 */
-h3 {
-  font-family: 'Times New Roman Bold', serif;
-  font-weight: 700;
-  color: #ffffff;
-  text-shadow: 1px 1px 1px #aaa;
-}
-
 .accordion-area{
   list-style: none;
   width: 96%;
-  max-width: 900px;
+  max-width: 700px;
   margin:0 auto;
 }
 
@@ -68,24 +61,33 @@ h3 {
 }
 
 .accordion-area section {
-	border: 1px solid #ccc;
+	border: 4px solid #dbdbdb;
   background-color: rgba(150, 150, 150, 0.8);
 }
 
+
 .title {
+  font-family: 'Arial Narrow Bold';
   position: relative;/*+マークの位置基準とするためrelative指定*/
   cursor: pointer;
-  font-size:1rem;
-  font-weight: normal;
-  padding: 3% 3% 3% 50px;
+  font-size:1.2rem;
+  font-weight: 600;
+  color: #ffffff;
+  text-shadow: 1px 1px 25px #000000;
+  padding: 1% 2% 1% 50px;
   transition: all .5s ease;
+}
+
+.title:hover{
+  color: rgb(126, 255, 255);
+  text-shadow: 1px 1px 25px #b4b4b4;
 }
 
 .title::before,
 .title::after{
     position: absolute;
     content:'';
-    width: 15px;
+    width: 16px;
     height: 2px;
     background-color: #212121;
 }
@@ -116,8 +118,8 @@ h3 {
 .box {
     display: none;/*はじめは非表示*/
     background: rgba(226, 226, 226, 0.6);
-	margin:0 3% 3% 3%;
-    padding: 3%;
+	margin:0 2% 2% 2%;
+    padding: 2%;
 }
 
 textarea {
