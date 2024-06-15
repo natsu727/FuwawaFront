@@ -12,10 +12,10 @@ function BookDetail() {
     marginTop: 150,
   };
 
+         // <Sample />
   return (
     <div className="App">
       <div style={style}>
-        // <Sample />
       </div>
     </div>
   );
