@@ -3,7 +3,6 @@ import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import Bookshelf from "./components/Bookshelf";
 import GenerateBook from "./components/GenerateBook";
 import SearchBooks from "./components/SearchBooks";
-import Test from "./components/test";
 
 function App() {
   return (
@@ -20,9 +19,6 @@ function App() {
             <li>
               <Link to="/search">蔵書検索</Link>
             </li>
-            <li>
-              <Link to="/test">test</Link>
-            </li>
           </ul>
         </nav>
 
@@ -30,7 +26,6 @@ function App() {
           <Route path="/" element={<Bookshelf />} />
           <Route path="/generate" element={<GenerateBook />} />
           <Route path="/search" element={<SearchBooks />} />
-          <Route path="/test" element={<Test />} />
         </Routes>
       </div>
     </Router>
