@@ -5,7 +5,6 @@ const SearchBooks = () => {
   const [searchResults, setSearchResults] = useState([]);
 
   const handleSearch = async () => {
-    // 検索処理を実装
     try {
       const response = await fetch(`API_URL/search?q=${searchTerm}`);
       const data = await response.json();
@@ -22,14 +21,14 @@ const SearchBooks = () => {
         type="text"
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
-        placeholder="Search by title, genre, or keyword"
+        placeholder="タイトル、ジャンル、キーワードで検索"
       />
-      <button onClick={handleSearch}>Search</button>
+      <button onClick={handleSearch}>検索</button>
       <div>
         {searchResults.map((book) => (
           <div key={book.id}>
             <h3>{book.title}</h3>
-            <p>Genre: {book.genre}</p>
+            <p>ジャンル: {book.genre}</p>
             {/* 他の本の情報も表示 */}
           </div>
         ))}
