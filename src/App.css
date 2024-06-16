@@ -59,6 +59,38 @@ nav {
   margin-left: auto;
 }
 
+.topName{
+  font-family: 'Wendelin';
+  position: relative;/*+マークの位置基準とするためrelative指定*/
+  cursor: pointer;
+  font-size:1.2rem;
+  font-weight: 600;
+  color: #ffffff;
+  text-shadow: 1px 1px 25px #000000;
+  transition: all .5s ease;
+  text-decoration: none;
+}
+
+.topPage{
+  font-family: 'Arial Narrow Bold';
+  position: relative;/*+マークの位置基準とするためrelative指定*/
+  cursor: pointer;
+  font-size:1.2rem;
+  font-weight: 600;
+  color: #ffffff;
+  text-shadow: 1px 1px 25px #000000;
+  transition: all .5s ease;
+  padding-top:1px;
+  margin: 15px 0px 10px 50px;
+  text-decoration: none;
+}
+
+.topPage:hover{
+  color: rgb(126, 255, 255);
+  text-shadow: 1px 1px 25px #b4b4b4;
+  text-decoration: none;
+}
+
 /* 背景等 */
 #root {
   position: relative;
@@ -71,12 +103,31 @@ nav {
 }
 
 /* アコーディオンパネルの装飾等 */
+/* その場で */
+.accordion-area{
+  animation-name:fadeInAnime;
+  animation-duration:1s;
+  animation-fill-mode:forwards;
+  opacity:0;
+  }
+  
+  @keyframes fadeInAnime{
+    from {
+      opacity: 0;
+    }
+  
+    to {
+      opacity: 1;
+    }
+  }
+
 .accordion-area{
   list-style: none;
   width: 96%;
-  max-width: 700px;
+  max-width: 850px;
   margin: 0 auto;
   margin-bottom: 10px;
+  text-decoration: none;
 }
 
 .accordion-area li{
@@ -151,4 +202,3 @@ textarea {
   font-size: 16px;
   line-height: 1.5; /* 行の高さ */
 }
-
