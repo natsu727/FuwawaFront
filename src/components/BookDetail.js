@@ -47,8 +47,9 @@ const BookDetail = () => {
   return (
     <div className="book-detail">
       <div className="book-content">
-        <p>{visibleContent}</p>
-      </div>
+      {visibleContent.split('').map((char, index) => (
+    <span key={index}>{char}</span>
+  ))}      </div>
       <div className="navigation-buttons">
         <button onClick={handlePrevPage} disabled={currentPage === 0}>
           前のページ
