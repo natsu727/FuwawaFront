@@ -1,0 +1,17 @@
+.book-detail {
+  padding: 20px;
+}
+
+.book-content {
+  width: 80%;
+  margin: 0 auto;
+  white-space: pre-wrap;
+  overflow: hidden;
+  background-color: aliceblue;
+}
+
+.navigation-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}

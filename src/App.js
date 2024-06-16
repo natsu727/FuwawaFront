@@ -49,7 +49,7 @@ function App() {
           <Route path="/search" element={<SearchBooks />} />
 
           {/* テスト用 */}
-          <Route path="/detail" element={<BookDetail />} />
+          <Route path="/detail/:id" element={<BookDetail />} />
 
         </Routes>
       </div>
