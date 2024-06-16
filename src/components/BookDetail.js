@@ -9,7 +9,12 @@ const BookDetail = () => {
   const [currentPage, setCurrentPage] = useState(0);
 
   useEffect(() => {
-    fetch(`https://fuwawa-back2.onrender.com/book/${id}`)
+    // サンプルデータ
+    // const sampleContent = "これはサンプルの本の内容です。".repeat(100); // 繰り返しで長いサンプルテキストを作成
+    // setContent(sampleContent);
+    // setVisibleContent(sampleContent.substring(0, 200));
+
+    fetch(`https://fuwawa-back2.onrender.com/data/${id}`)
       .then((response) => response.json())
       .then((data) => {
         setContent(data.content);
@@ -37,7 +42,6 @@ const BookDetail = () => {
 
   return (
     <div className="book-detail">
-      <h2>本の詳細</h2>
       <div className="book-content">
         <p>{visibleContent}</p>
       </div>
