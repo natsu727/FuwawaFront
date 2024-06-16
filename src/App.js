@@ -6,9 +6,8 @@ import SearchBooks from "./components/SearchBooks";
 import "./App.css";
 import BookDetail from "./components/BookDetail";
 
-
 function App() {
-  const[accordionStatus]=useState(false);
+  const [accordionStatus] = useState(false); // Accordion status state
   const [State,setState]=useState(false);
   return (
     <Router>
@@ -29,21 +28,6 @@ function App() {
                 <SearchBooks isOpen={accordionStatus} />
               </li>
             </section>
-            
-           {/* <ul className="menu"> */}
-             {/* <li> */}
-               {/* <Link to="">トップページ</Link> */}
-             {/* </li> */}
-             {/* <li> */}
-               {/* <Link to="/generate">生成ページ</Link> */}
-             {/* </li> */}
-             {/* <li> */}
-               {/* <Link to="/search">蔵書検索</Link> */}
-             {/* </li> */}
-             {/* <button> */}
-               {/* ログイン */}
-             {/* </button> */}
-           {/* </ul> */}
           </ul>
         </nav>
 
@@ -51,10 +35,7 @@ function App() {
           <Route path="/" element={<Bookshelf isState={State}/>} />
           <Route path="/generate" element={<GenerateBook />} />
           <Route path="/search" element={<SearchBooks />} />
-
-          {/* テスト用 */}
-          <Route path="/detail/:id" element={<BookDetail />} />
-
+          <Route path="/book/:id" element={<BookDetail />} />
         </Routes>
       </div>
     </Router>

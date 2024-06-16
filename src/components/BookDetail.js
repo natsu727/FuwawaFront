@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import "./BookDetail.css";
 
@@ -9,16 +9,20 @@ const BookDetail = () => {
   const [currentPage, setCurrentPage] = useState(0);
 
   useEffect(() => {
-    // サンプルデータ
-    // const sampleContent = "これはサンプルの本の内容です。".repeat(100); // 繰り返しで長いサンプルテキストを作成
-    // setContent(sampleContent);
-    // setVisibleContent(sampleContent.substring(0, 200));
-
     fetch(`https://fuwawa-back2.onrender.com/data/${id}`)
       .then((response) => response.json())
       .then((data) => {
-        setContent(data.content);
-        setVisibleContent(data.content.substring(0, 200));
+        if (data.length > 0) {
+          const bookData = data[0]; // Assuming data is an array, take the first element
+          setContent(bookData.content);
+          setVisibleContent(bookData.content.substring(0, 200));
+        } else {
+          throw new Error("No content available");
+        }
+      })
+      .catch((error) => {
+        console.error('Error fetching or setting content:', error);
+        // Handle errors here
       });
   }, [id]);
 
@@ -49,7 +53,7 @@ const BookDetail = () => {
         <button onClick={handlePrevPage} disabled={currentPage === 0}>
           前のページ
         </button>
-        <button onClick={handleNextPage} disabled={currentPage * 200 >= content.length}>
+        <button onClick={handleNextPage} disabled={currentPage * 200 >= (content ? content.length : 0)}>
           次のページ
         </button>
       </div>
