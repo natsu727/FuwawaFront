@@ -33,42 +33,32 @@ const HandTracker = ({ onMoveLeft, onMoveRight }) => {
       if (handModel && videoRef.current) {
         const predictions = await handModel.estimateHands(videoRef.current);
         if (predictions.length > 0) {
+          console.log("OK")
           const hand = predictions[0];
           const coords = hand.landmarks[0]; // ここでは、手首の座標を使用
           const middle_Tip=hand.landmarks[12];
           const middle_Pip=hand.landmarks[10];
           if(middle_Tip[1]-middle_Pip[1]>0 && !handStatus){
-            console.log("ON")
+            // console.log("ON")
             setStartPos(coords);
             setHandStatus(true);
           }
           else if(middle_Tip[1]-middle_Pip[1]<0 && handStatus){
-            console.log("OFF")
+            // console.log("OFF")
             const dx=startPos[0]-coords[0]
             if(Math.sqrt(dx**2)>50){
-              startPos[0]-coords[0] >0 ? onMoveRight():onMoveLeft();
+              if(startPos[0]-coords[0] >0){
+                onMoveRight();
+              }else{onMoveLeft()}
             }
-            // console.log(startPos[0]-coords[0]>0 ? "Right":"Left")
             setHandStatus(false);
           }
-          // if (prevCoords && !handStatus) {
-          //   const dx = coords[0] - prevCoords[0];
-          //   const dy = coords[1] - prevCoords[1];
-          //   const distance = Math.sqrt(dx**2 + dy**2);
-          //   if (distance > 60) { // 移動差分の閾値を設定
-          //     if (dx > 0) {
-          //       // onMoveRight();
-          //     } else {
-          //       // onMoveLeft();
-          //     }
-          //   }
-          // }
           setPrevCoords(coords);
         }
       }
     };
 
-    const interval = setInterval(detectHands, 200); // 0.1秒ごとに検出
+    const interval = setInterval(detectHands, 100); // 0.1秒ごとに検出
     return () => clearInterval(interval);
   }, [handModel, prevCoords, onMoveLeft, onMoveRight]);
 
