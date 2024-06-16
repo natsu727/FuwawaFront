@@ -44,21 +44,25 @@ const HandTracker = ({ onMoveLeft, onMoveRight }) => {
           }
           else if(middle_Tip[1]-middle_Pip[1]<0 && handStatus){
             console.log("OFF")
-            console.log(startPos[0]-coords[0]>0 ? "Right":"Left")
+            const dx=startPos[0]-coords[0]
+            if(Math.sqrt(dx**2)>50){
+              startPos[0]-coords[0] >0 ? onMoveRight():onMoveLeft();
+            }
+            // console.log(startPos[0]-coords[0]>0 ? "Right":"Left")
             setHandStatus(false);
           }
-          if (prevCoords && !handStatus) {
-            const dx = coords[0] - prevCoords[0];
-            const dy = coords[1] - prevCoords[1];
-            const distance = Math.sqrt(dx**2 + dy**2);
-            if (distance > 60) { // 移動差分の閾値を設定
-              if (dx > 0) {
-                // onMoveRight();
-              } else {
-                // onMoveLeft();
-              }
-            }
-          }
+          // if (prevCoords && !handStatus) {
+          //   const dx = coords[0] - prevCoords[0];
+          //   const dy = coords[1] - prevCoords[1];
+          //   const distance = Math.sqrt(dx**2 + dy**2);
+          //   if (distance > 60) { // 移動差分の閾値を設定
+          //     if (dx > 0) {
+          //       // onMoveRight();
+          //     } else {
+          //       // onMoveLeft();
+          //     }
+          //   }
+          // }
           setPrevCoords(coords);
         }
       }
