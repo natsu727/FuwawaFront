@@ -9,15 +9,19 @@ import BookDetail from "./components/BookDetail";
 
 function App() {
   const[accordionStatus]=useState(false);
+  const [State,setState]=useState(false);
   return (
     <Router>
       <div id="root">
         <nav>
-          <li>
-            <Link to="/" className="title">本棚</Link>
-          </li>
+          <div>
+            <Link to="/" className="topName">無間図書館</Link>
+          </div>
           <ul className="accordion-area">
             <section>
+              <il>
+                <Link to="/"><div className="topPage" onClick={()=>setState(true)}>本棚</div></Link>
+              </il>
               <li>
                 <GenerateBook isOpen={accordionStatus} />
               </li>
@@ -44,7 +48,7 @@ function App() {
         </nav>
 
         <Routes>
-          <Route path="/" element={<Bookshelf />} />
+          <Route path="/" element={<Bookshelf isState={State}/>} />
           <Route path="/generate" element={<GenerateBook />} />
           <Route path="/search" element={<SearchBooks />} />
 
