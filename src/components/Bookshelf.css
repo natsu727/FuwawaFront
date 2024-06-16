@@ -3,11 +3,13 @@
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
-  padding: 20px;
+  /* padding: 20px; */
   border: 2px solid #333;
-  border-radius: 10px;
-  background-color: #efe3c1;
+  background-image:url(../img/bookShelf1.png);
+  /* border-radius: 10px; */
+  /*background-color: #efe3c1;*/
   overflow: scroll;
+  hight:400px;
 }
 
 .bookshelf::-webkit-scrollbar{
