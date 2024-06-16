@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import "./BookDetail.css";
+import HandTracker from "./HandTrack";
 
 const BookDetail = () => {
   const { id } = useParams();
@@ -46,6 +47,7 @@ const BookDetail = () => {
 
   return (
     <div className="book-detail">
+      <HandTracker onMoveLeft={handlePrevPage} onMoveRight={handleNextPage} />
       <div className="book-content">
         <p>{visibleContent}</p>
       </div>
