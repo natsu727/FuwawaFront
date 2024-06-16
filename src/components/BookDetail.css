@@ -3,10 +3,14 @@
 }
 
 .book-content {
-  width: 80%;
+  writing-mode: vertical-rl; /* 縦書きに設定 */
+  text-orientation: upright; /* 文字の向きを直立に設定 */
+  width: 75vh;
+  height: 78vh; /* 高さを画面の80%に設定 */
+  padding: 20px;
+  font-size: 30px; /* 適切な文字サイズに設定（必要に応じて調整） */
+  line-height: 3.4; /* 行間を調整 */
   margin: 0 auto;
-  white-space: pre-wrap;
-  overflow: hidden;
   background-color: aliceblue;
 }
 
