@@ -10,7 +10,14 @@ const BookDetail = () => {
   const [currentPage, setCurrentPage] = useState(0);
 
   useEffect(() => {
-    fetch(`https://fuwawa-back2.onrender.com/data/${id}`)
+    if(id==0){
+      const span = "　".repeat(199)
+      const content="１"+span+"２"+span+"３"
+      setContent(content);
+      setVisibleContent(content.substring(0, 200));
+    }
+    else{
+      fetch(`https://fuwawa-back2.onrender.com/data/${id}`)
       .then((response) => response.json())
       .then((data) => {
         if (data.length > 0) {
@@ -25,6 +32,7 @@ const BookDetail = () => {
         console.error('Error fetching or setting content:', error);
         // Handle errors here
       });
+    }
   }, [id]);
 
   const handleNextPage = () => {

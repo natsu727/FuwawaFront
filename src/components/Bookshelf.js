@@ -9,12 +9,13 @@ const getRandomColor = () => {
 };
 
 const Bookshelf = ({isState}) => {
-  const [books, setBooks] = useState([]);
-  // const [viewState,setViewState]=useState(false);
-  useEffect(() => {
-    fetch("https://fuwawa-back2.onrender.com/")
-      .then((response) => response.json())
-      .then((data) => setBooks(data));
+  const [books, setBooks] = useState([{id:0,title:"テストデ｜タ"}]);
+  const [viewState,setViewState]=useState(false);
+  // useEffect(() => {
+  //   fetch("https://fuwawa-back2.onrender.com/")
+  //     .then((response) => response.json())
+  //     .then((data) => setBooks(data))
+      // .catch(()=> setBooks());
     // const fetchBooks = async () => {
     //   try {
     //     const response = await fetch("https://fuwawa-back2.onrender.com/");
@@ -28,7 +29,7 @@ const Bookshelf = ({isState}) => {
     //   }
     // };
     // fetchBooks();
-  }, []);
+  // }, []);
   return (
     <div className="fadeRight" style ={{display: isState ? "block":"none"}}>
       <div className="bookshelf">
